@@ -74,6 +74,9 @@ set undolevels=1000
 set clipboard=unnamed
 set encoding=utf-8
 
+" The-NERD-Tree
+autocmd VimEnter * NERDTree .
+
 " Neocomplete
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
@@ -138,3 +141,4 @@ let g:pymode_folding = 0
 " Vim-Indent-Guides
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_guide_size = 1
+autocmd VimEnter * IndentGuidesEnable
