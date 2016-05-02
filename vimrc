@@ -134,3 +134,7 @@ endif
 
 " Python-Mode
 let g:pymode_folding = 0
+
+" Vim-Indent-Guides
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_guide_size = 1

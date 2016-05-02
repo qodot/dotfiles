@@ -278,3 +278,7 @@ end
 " Must be at the end, because of ctermbg=234 bug.
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
 set background=dark
+
+" vim-indent-guides
+hi IndentGuidesOdd  guibg=red   ctermbg=235
+hi IndentGuidesEven guibg=green ctermbg=236
