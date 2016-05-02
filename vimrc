@@ -2,6 +2,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+call pathogen#infect()
+call pathogen#helptags()
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -101,9 +104,9 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+    " return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
     " For no inserting <CR> key.
-    " return pumvisible() ? "\<C-y>" : "\<CR>"
+    return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -128,3 +131,6 @@ endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^.\t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:]*\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:]*\t]\%(\.\|->\)\|\h\w*::'
+
+" Python-Mode
+let g:pymode_folding = 0
