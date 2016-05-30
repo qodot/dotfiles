@@ -141,4 +141,6 @@ let g:pymode_folding = 0
 " Vim-Indent-Guides
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_guide_size = 1
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope = 0
 autocmd VimEnter * IndentGuidesEnable
