@@ -25,9 +25,11 @@ filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 
-colorscheme molokaidwseo
+set path=$PWD/**
+
 
 " Visual Config
+colorscheme molokaidwseo
 syntax on
 set number
 set title
