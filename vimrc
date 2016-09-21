@@ -26,6 +26,7 @@ filetype plugin indent on    " required
 "filetype plugin on
 
 set path=$PWD/**
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 
 " Visual Config
