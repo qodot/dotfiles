@@ -29,7 +29,6 @@ set path=$PWD/**
 
 
 " Visual Config
-colorscheme molokaidwseo
 syntax on
 set number
 set title
@@ -45,6 +44,11 @@ set guioptions=a
 set splitright
 set splitbelow
 set scrolloff=5
+
+" Macvim Visual Config
+if has("gui_macvim")
+   colorscheme railscasts
+endif
 
 " Format Confing
 set list
@@ -70,19 +74,20 @@ set incsearch
 set ignorecase
 set smartcase
 
-" Function Config
+" ETC Config
+set autoread
 set history=1000
 set undolevels=1000
 set clipboard=unnamed
 set encoding=utf-8
 
+
 " The-NERD-Tree
 autocmd VimEnter * NERDTree .
 
+
 " Neocomplete
-" Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -121,7 +126,6 @@ inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 " Close popup by <Space>.
 " inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
-
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -137,8 +141,10 @@ endif
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:]*\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:]*\t]\%(\.\|->\)\|\h\w*::'
 
+
 " Python-Mode
 let g:pymode_folding = 0
+
 
 " Vim-Indent-Guides
 let g:indent_guides_auto_colors = 0
