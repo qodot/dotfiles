@@ -30,6 +30,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 
 " Visual Config
+colorscheme molokaidwseo
 syntax on
 set number
 set title
