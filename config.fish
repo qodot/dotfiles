@@ -23,11 +23,13 @@ alias gl='git log --graph --pretty=format:\'%Cred%h%Creset -%C(yellow)%d%Creset 
 alias gs='git status'
 alias gd='git diff --word-diff'
 alias gsd='git sd'
-alias ga='git add'
-alias gc='git commit'
+alias ga='git add -p'
+alias gc='git commit -v'
 alias gpl='git pull'
 alias gps='git push'
 alias gch='git checkout'
+alias gf='git fetch'
+alias gm='git merge'
 
 # blog
 alias pc='~/.pyenv/versions/blog/bin/python ~/settings/pelican_content.py; ~/.pyenv/versions/blog/bin/pelican ~/blog/content'
