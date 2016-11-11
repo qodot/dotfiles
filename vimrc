@@ -45,7 +45,7 @@ set mouse=a
 set guioptions=a
 set splitright
 set splitbelow
-set scrolloff=5
+set scrolloff=999
 
 " Macvim Visual Config
 if has("gui_macvim")
@@ -82,6 +82,7 @@ set history=1000
 set undolevels=1000
 set clipboard=unnamed
 set encoding=utf-8
+set fileencoding=utf-8
 
 
 " The-NERD-Tree
