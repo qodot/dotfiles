@@ -12,6 +12,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'The-NERD-tree'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'posva/vim-vue'
 "Plugin 'tpope/vim-fugitive'
 "Plugin 'L9'
 "Plugin 'git://git.wincent.com/command-t.git'
