@@ -31,7 +31,9 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 
 " Visual Config
-colorscheme molokaidwseo
+set termguicolors
+colorscheme breezy
+
 syntax on
 set number
 set title
