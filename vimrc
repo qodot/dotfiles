@@ -32,7 +32,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " Visual Config
 set termguicolors
-colorscheme breezy
+colorscheme broduo
 
 syntax on
 set number
