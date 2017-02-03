@@ -10,7 +10,7 @@ def pelican_content():
     directories = os.listdir(ia_writer_home)
     print(directories)
     for directory in directories:
-        if directory in ('drafts', '.DS_Store'):
+        if directory in ('drafts', '.DS_Store', 'diary', 'book', 'music'):
             continue
         src_dir = os.path.join(ia_writer_home, directory)
         des_dir = os.path.join(pelican_content_home, directory)
