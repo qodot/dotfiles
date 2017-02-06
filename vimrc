@@ -1,7 +1,4 @@
 """ Vundle Config
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -30,6 +27,11 @@ Plugin 'posva/vim-vue'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
+call plug#begin('~/.vim/plugged')
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+call plug#end()
+
 filetype plugin indent on    " required
 
 
