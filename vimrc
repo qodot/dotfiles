@@ -1,6 +1,5 @@
 """ Vundle Config
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible              " be iMproved, required filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -11,6 +10,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'The-NERD-tree'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " theme
 Plugin 'mhartington/oceanic-next'
@@ -103,3 +104,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " Python-Mode
 let g:pymode_folding = 0
+
+" Vim-Airline
+let g:airline_theme='bubblegum'
+
