@@ -1,5 +1,6 @@
 """ Vundle Config
-set nocompatible              " be iMproved, required filetype off                  " required
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -12,6 +13,7 @@ Plugin 'The-NERD-tree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'git://github.com/klen/python-mode.git'
 
 " theme
 Plugin 'mhartington/oceanic-next'
@@ -29,8 +31,6 @@ Plugin 'posva/vim-vue'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
 
 
 """ Vim Config
@@ -103,8 +103,9 @@ set path=$PWD/**
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " Python-Mode
+let g:pymode_python = 'python3'
 let g:pymode_folding = 0
 
 " Vim-Airline
-let g:airline_theme='bubblegum'
+let g:airline_theme='base16'
 
