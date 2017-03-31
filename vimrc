@@ -16,8 +16,7 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'mhartington/oceanic-next'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-call plug#end()
+Plug 'vim-airline/vim-airline-themes' call plug#end()
 
 filetype plugin indent on    " required
 
@@ -87,13 +86,17 @@ autocmd VimEnter * NERDTree .
 set path=$PWD/**
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
+" Deoplete
+call deoplete#enable()
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " Python-Mode
 let g:pymode_python = 'python3'
 let g:pymode_folding = 0
 
 " Neomake
 autocmd! BufWritePost * Neomake
-let g:neomake_open_list = 2
 let g:neomake_javascript_enabled_makers = ['eslint']
 
 " Vim-Airline-Themes
