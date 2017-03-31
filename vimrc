@@ -16,9 +16,10 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'mhartington/oceanic-next'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes' call plug#end()
+Plug 'vim-airline/vim-airline-themes'
+call plug#end()
 
-filetype plugin indent on    " required
+filetype plugin indent on
 
 " Theme
 syntax enable
@@ -89,7 +90,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 " Deoplete
 call deoplete#enable()
 let g:deoplete#enable_at_startup = 1
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Python-Mode
 let g:pymode_python = 'python3'
