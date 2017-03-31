@@ -1,52 +1,34 @@
-""" Vundle Config
+" Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
-" let Vundle manage Vundle, required
-
-" functional
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'The-NERD-tree'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'git://github.com/klen/python-mode.git'
+call vundle#end()
 
-" theme
-Plugin 'mhartington/oceanic-next'
-
-" syntax
-Plugin 'posva/vim-vue'
-
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'L9'
-"Plugin 'git://git.wincent.com/command-t.git'
-"Plugin 'file:///home/gmarik/path/to/plugin'
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Plugin 'user/L9', {'name': 'newL9'}
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-
+" Vim-Plug
 call plug#begin('~/.vim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neomake/neomake'
+
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+Plug 'mhartington/oceanic-next'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 filetype plugin indent on    " required
 
-
-""" Vim Config
-
-" Visual Config
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
+" Theme
+syntax enable
 if (has("termguicolors"))
- set termguicolors
+    set termguicolors
 endif
-
 colorscheme OceanicNext
 
-syntax enable
+" Visual
 set number
 set title
 set ruler
@@ -77,6 +59,10 @@ set autoindent
 set cindent
 set smartindent
 
+autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
+
 " Key Config
 set backspace=indent,eol,start
 
@@ -94,9 +80,6 @@ set clipboard=unnamed
 set encoding=utf-8
 set fileencoding=utf-8
 
-
-""" Plugin Config
-
 " The-NERD-Tree
 autocmd VimEnter * NERDTree .
 
@@ -108,6 +91,10 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:pymode_python = 'python3'
 let g:pymode_folding = 0
 
-" Vim-Airline
-let g:airline_theme='base16'
+" Neomake
+autocmd! BufWritePost * Neomake
+let g:neomake_open_list = 2
+let g:neomake_javascript_enabled_makers = ['eslint']
 
+" Vim-Airline-Themes
+let g:airline_theme='base16'
