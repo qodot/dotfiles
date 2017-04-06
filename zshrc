@@ -83,6 +83,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# navigation
+alias mb='cd ~/workspace/monitor-bot/'
+alias t='cd ~/workspace/tight/'
+alias p='cd ~/workspace/preface/'
+alias h='cd ~/workspace/high/'
+
 # git
 alias g='git'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -114,14 +120,33 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+# node
+export PATH=$PATH:/usr/local/Cellar/node/5.2.0/bin
+
 # postgresql
 alias pgstart='postgres -D /usr/local/var/postgres'
 
+# rabbitmq
+export PATH=$PATH:/usr/local/sbin
+
 # django
 alias pm='python manage.py'
+alias pms='python manage.py runserver 127.0.0.1:8001'
+
+# preface-service-api
+alias psa='cd ~/workspace/preface-service-api/'
+alias psw='cd ~/workspace/preface-service-web/'
+
+# preface-fund-api
+alias pfa='cd ~/workspace/preface-fund-api/'
+export FLASK_APP='wsgi.py'
+export FUND_API_ENVIRONMENT='dev'
 
 # how-was-your-day
 alias hd='cd ~/projects/how-was-your-day'
 
 # gtbot
 alias gt='cd ~/projects/gtbot'
+
+# docs
+alias iaw='cd ~/Dropbox/iA Writer/'

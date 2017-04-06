@@ -11,12 +11,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neomake/neomake'
 
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/goyo.vim'
 Plug 'vim-airline/vim-airline'
 
-Plug 'mhartington/oceanic-next'
 Plug 'junegunn/seoul256.vim'
+Plug 'mhartington/oceanic-next'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
