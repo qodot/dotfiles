@@ -13,9 +13,10 @@ Plug 'neomake/neomake'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
 
 Plug 'mhartington/oceanic-next'
-Plug 'vim-airline/vim-airline'
+Plug 'junegunn/seoul256.vim'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
@@ -26,7 +27,10 @@ syntax enable
 if (has("termguicolors"))
     set termguicolors
 endif
-colorscheme OceanicNext
+
+let g:seoul256_background = 235
+colorscheme seoul256
+" colorscheme OceanicNext
 
 " Visual
 set number
