@@ -46,7 +46,7 @@ set scrolloff=999
 
 " Format Confing
 set list
-set listchars=tab:->,trail:.
+set listchars=space:·,tab:->,trail:.
 set formatoptions=cqrt
 
 " Tab Config
@@ -79,6 +79,9 @@ set undolevels=1000
 set clipboard=unnamed
 set encoding=utf-8
 set fileencoding=utf-8
+
+" Key Bindings
+map <C-c> <Esc>
 
 " The-NERD-Tree
 autocmd VimEnter * NERDTree .
