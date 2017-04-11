@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neomake/neomake'
 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/goyo.vim'
@@ -87,13 +88,10 @@ set fileencoding=utf-8
 
 " Key Bindings
 map <C-c> <Esc>
+map <C-p> :FZF<cr>
 
 " The-NERD-Tree
 autocmd VimEnter * NERDTree .
-
-" CtrlP
-set path=$PWD/**
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " Deoplete
 call deoplete#enable()
@@ -109,4 +107,4 @@ autocmd! BufWritePost * Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
 
 " Vim-Airline-Themes
-let g:airline_theme='base16'
+" let g:airline_theme='base16'
