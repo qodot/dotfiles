@@ -2,20 +2,22 @@ import os
 import shutil
 
 home = os.path.expanduser('~')
-ia_writer_home = os.path.join(home, 'Dropbox/iA Writer/developer')
-pelican_content_home = os.path.join(home, 'workspace/blog/content')
+content_src = os.path.join(home, 'Dropbox/iA Writer/developer')
+image_src = os.path.join(home, 'Dropbox/iA Writer/developer/images')
+content_dest = os.path.join(home, 'workspace/blog/content/post')
+image_dest = os.path.join(home, 'workspace/blog/static/image')
 
 
 def cpdocs():
-    for directory in os.listdir(ia_writer_home):
-        if directory in ('drafts', '.DS_Store'):
-            continue
+    files = [f for f in os.listdir(content_src)
+             if os.path.isfile(os.path.join(content_src, f))]
+    for f in files:
+        shutil.copy(os.path.join(content_src, f), content_dest)
 
-        src_dir = os.path.join(ia_writer_home, directory)
-        des_dir = os.path.join(pelican_content_home, directory)
-        if os.path.exists(des_dir):
-            shutil.rmtree(des_dir)
-        shutil.copytree(src_dir, des_dir)
+    images = [f for f in os.listdir(image_src)
+              if os.path.isfile(os.path.join(image_src, f))]
+    for f in images:
+        shutil.copy(os.path.join(image_src, f), image_dest)
 
 
 if __name__ == '__main__':
