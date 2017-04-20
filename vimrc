@@ -87,8 +87,10 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 " Key Bindings
-map <C-c> <Esc>
 map <C-p> :FZF<cr>
+map <C-c> <Esc>
+imap <C-c> <Esc>
+vmap <C-c> <Esc>
 
 " The-NERD-Tree
 autocmd VimEnter * NERDTree .
@@ -101,6 +103,10 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " Python-Mode
 let g:pymode_python = 'python3'
 let g:pymode_folding = 0
+let g:pymode_rope = 0
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_autoimport = 0
 
 " Neomake
 autocmd! BufWritePost * Neomake
