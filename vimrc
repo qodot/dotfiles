@@ -6,8 +6,7 @@ Plugin 'The-NERD-tree'
 Plugin 'git://github.com/klen/python-mode.git'
 call vundle#end()
 
-" Vim-Plug
-call plug#begin('~/.vim/plugged')
+" Vim-Plug call plug#begin('~/.vim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neomake/neomake'
 
@@ -16,6 +15,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/goyo.vim'
 Plug 'vim-airline/vim-airline'
+
+Plug 'posva/vim-vue'
 
 Plug 'junegunn/seoul256.vim'
 Plug 'mhartington/oceanic-next'
@@ -66,6 +67,7 @@ set cindent
 set smartindent
 
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype vue setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
 
