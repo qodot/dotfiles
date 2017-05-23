@@ -6,7 +6,8 @@ Plugin 'The-NERD-tree'
 Plugin 'git://github.com/klen/python-mode.git'
 call vundle#end()
 
-" Vim-Plug call plug#begin('~/.vim/plugged')
+" Vim-Plug
+call plug#begin('~/.vim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neomake/neomake'
 
@@ -53,7 +54,7 @@ set scrolloff=999
 
 " Format Confing
 set list
-set listchars=space:·,tab:->,trail:.
+set listchars=space:·,tab:››,trail:.
 set formatoptions=cqrt
 
 " Tab Config
@@ -70,6 +71,7 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype vue setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype go setlocal ts=8 sts=8 sw=8 noexpandtab
 
 " Key Config
 set backspace=indent,eol,start
