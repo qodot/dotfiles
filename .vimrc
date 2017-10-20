@@ -1,25 +1,15 @@
-" Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'The-NERD-tree'
-" Plugin 'git://github.com/klen/python-mode.git'
-call vundle#end()
-
 " Vim-Plug
 call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neomake/neomake'
-Plug 'posva/vim-vue'
-
-Plug 'shime/vim-livedown'
-
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/goyo.vim'
+Plug 'The-NERD-tree'
 Plug 'vim-airline/vim-airline'
-
+Plug 'posva/vim-vue'
+Plug 'junegunn/goyo.vim'
+Plug 'shime/vim-livedown'
 Plug 'junegunn/seoul256.vim'
 call plug#end()
 
@@ -30,10 +20,8 @@ syntax enable
 if (has("termguicolors"))
     set termguicolors
 endif
-
 let g:seoul256_background = 235
 colorscheme seoul256
-" colorscheme OceanicNext
 
 " Visual
 set number
@@ -106,5 +94,3 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " Neomake
 autocmd! BufWritePost * Neomake
 let g:neomake_javascript_enabled_makers = ['eslint', 'flake8']
-
-" Livedown
