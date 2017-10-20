@@ -7,7 +7,7 @@ Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'The-NERD-tree'
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'posva/vim-vue'
 Plug 'junegunn/goyo.vim'
 Plug 'shime/vim-livedown'
@@ -39,6 +39,7 @@ set guioptions=a
 set splitright
 set splitbelow
 set scrolloff=999
+set noshowmode
 
 " Format Confing
 set list
@@ -96,3 +97,8 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " Neomake
 autocmd! BufWritePost * Neomake
 let g:neomake_javascript_enabled_makers = ['eslint', 'flake8']
+
+" Lightline
+let g:lightline = {
+            \ 'colorscheme': 'seoul256',
+            \ }
