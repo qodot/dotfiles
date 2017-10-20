@@ -1,6 +1,7 @@
 " Vim-Plug
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'mileszs/ack.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
@@ -77,7 +78,8 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 " Key Bindings
-map <C-p> :FZF<cr>
+map <C-p> :FZF <CR>
+map <C-a> :Ack! "\b<cword>\b" <CR>
 map <C-c> <Esc>
 imap <C-c> <Esc>
 vmap <C-c> <Esc>
