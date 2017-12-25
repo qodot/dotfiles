@@ -1,12 +1,12 @@
 " Vim-Plug
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'mileszs/ack.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'The-NERD-tree'
 Plug 'itchyny/lightline.vim'
 Plug 'posva/vim-vue'
 Plug 'junegunn/goyo.vim'
@@ -80,25 +80,27 @@ set fileencoding=utf-8
 
 " Key Bindings
 map <C-p> :FZF <CR>
-map <C-a> :Ack! "\b<cword>\b" <CR>
+map <C-s> :Ack! "\b<cword>\b" <CR>
+nmap <Leader>w :w<CR>
 map <C-c> <Esc>
 imap <C-c> <Esc>
 vmap <C-c> <Esc>
 
-" The-NERD-Tree
+" nerdtree
 autocmd VimEnter * NERDTree .
-let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeShowHidden = 1
 
-" Deoplete
-call deoplete#enable()
+" deoplete
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
-" Neomake
-autocmd! BufWritePost * Neomake
-let g:neomake_javascript_enabled_makers = ['eslint', 'flake8']
+" neomake
+call neomake#configure#automake('w')
+call neomake#configure#automake('nw', 750)
+call neomake#configure#automake('rw', 1000)
 
-" Lightline
+" lightline
 let g:lightline = {
             \ 'colorscheme': 'seoul256',
             \ }

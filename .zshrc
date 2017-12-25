@@ -1,10 +1,12 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/qodot/.oh-my-zsh 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="muse"
+export ZSH=/Users/qodot/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME='sunrise'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -50,12 +52,11 @@ ZSH_THEME="muse"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
+source $ZSH/oh-my-zsh.sh
+
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -71,7 +72,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -81,9 +82,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
 
 # git
-alias g='git'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gs='git status'
 alias gd='git diff --word-diff'
@@ -97,16 +98,24 @@ alias gch='git checkout'
 alias gf='git fetch'
 alias gm='git merge'
 
-# vim
+# editor
 alias vi='/usr/local/bin/nvim'
 export EDITOR='/usr/local/bin/nvim'
-
-# sublime text
-alias sb='subl'
-export PATH=$PATH:~/bin
+alias md='/usr/local/bin/macdown'
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# ctags
+alias ctags='/usr/local/bin/ctags'
+
+# colorls
+source $(dirname $(gem which colorls))/tab_complete.sh
+alias ls='colorls'
+alias ll='colorls -l'
+
+# autoenv
+source $(brew --prefix autoenv)/activate.sh
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -114,32 +123,20 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# rbenv
-eval "$(rbenv init -)"
-
-# autoenv
-source $(brew --prefix autoenv)/activate.sh
-
-# go
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$(go env GOPATH)
-
 # nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# postgresql
-alias pgstart='postgres -D /usr/local/var/postgres'
+# imagemagick
+export MAGICK_HOME='/usr/local/Cellar/imagemagick@6/6.9.9-20'
 
-# rabbitmq
-export PATH=$PATH:/usr/local/sbin
+# mysql
+export PATH="/usr/local/mysql/bin:$PATH"
 
-# django
-alias pm='python manage.py'
-alias pms='python manage.py runserver 127.0.0.1:8001'
+# navigation
+alias ww='/Users/qodot/workspace/wantedweb'
 
 # gtbot
-alias gt='cd ~/workspace/gtbot'
-export GTBOT_SLACK_TOKEN='xoxb-105318460834-yHfg37L6Xt9N76r6UoKs88eM'
-export GTBOT_GOOGLE_TOKEN='AIzaSyDg1yTQcPIvfw7fuYQXorWwrlUphJCcHaA'
-export GTBOT_SLACK_TOKEN_TEST='xoxp-97992726579-98061134818-106885158437-e73ec60334ed1052a98da2e2fd95bb4f'
+export GTBOT_SLACK_TOKEN='xoxb-273506533014-4PUTqO8E13bZQRyi84vN1TUa'
+export GTBOT_GOOGLE_TOKEN='AIzaSyCrAbZovVQc_hoymDpO9wXX-UDoWKQt358'
