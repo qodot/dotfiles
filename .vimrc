@@ -1,17 +1,25 @@
 " Vim-Plug
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'mileszs/ack.vim'
+
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neomake/neomake'
+
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'itchyny/lightline.vim'
-Plug 'posva/vim-vue'
+
 Plug 'junegunn/goyo.vim'
 Plug 'shime/vim-livedown'
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'posva/vim-vue'
+
+Plug 'kaicataldo/material.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 filetype plugin indent on
@@ -21,8 +29,11 @@ syntax enable
 if (has("termguicolors"))
     set termguicolors
 endif
-let g:seoul256_background = 235
-colorscheme seoul256
+
+" let g:seoul256_background = 235
+" colorscheme seoul256
+
+colorscheme material
 
 " Visual
 set number
@@ -87,7 +98,7 @@ imap <C-c> <Esc>
 vmap <C-c> <Esc>
 
 " nerdtree
-autocmd VimEnter * NERDTree .
+" autocmd VimEnter * NERDTree .
 let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeShowHidden = 1
 
@@ -102,5 +113,5 @@ call neomake#configure#automake('rw', 1000)
 
 " lightline
 let g:lightline = {
-            \ 'colorscheme': 'seoul256',
+            \ 'colorscheme': 'material_vim',
             \ }

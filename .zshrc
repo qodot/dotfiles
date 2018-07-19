@@ -6,7 +6,7 @@ export ZSH=/Users/qodot/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME='sunrise'
+ZSH_THEME='muse'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -82,13 +82,15 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
+
+# bin
+export PATH="/Users/qodot/bin:$PATH"
 
 # git
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gs='git status'
 alias gd='git diff --word-diff'
-alias gsd='git sd'
+alias gst='git stash'
 alias ga='git add -p'
 alias gaa='git add .'
 alias gc='git commit -v'
@@ -110,9 +112,9 @@ alias md='/usr/local/bin/macdown'
 alias ctags='/usr/local/bin/ctags'
 
 # colorls
-source $(dirname $(gem which colorls))/tab_complete.sh
-alias ls='colorls'
-alias ll='colorls -l'
+# source $(dirname $(gem which colorls))/tab_complete.sh
+alias ls='colorls --almost-all --sort-dirs'
+alias ll='colorls --almost-all --long --sort-dirs'
 
 # autoenv
 source $(brew --prefix autoenv)/activate.sh
@@ -126,7 +128,6 @@ eval "$(pyenv virtualenv-init -)"
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # imagemagick
 export MAGICK_HOME='/usr/local/Cellar/imagemagick@6/6.9.9-20'
@@ -135,7 +136,9 @@ export MAGICK_HOME='/usr/local/Cellar/imagemagick@6/6.9.9-20'
 export PATH="/usr/local/mysql/bin:$PATH"
 
 # navigation
-alias ww='/Users/qodot/workspace/wantedweb'
+alias ww='/Users/qodot/workspace/wanted/wantedweb'
+alias ws='/Users/qodot/workspace/wanted/sally'
+alias wb='/Users/qodot/workspace/wanted/backdoor'
 
 # gtbot
 export GTBOT_SLACK_TOKEN='xoxb-273506533014-4PUTqO8E13bZQRyi84vN1TUa'
