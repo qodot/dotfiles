@@ -1,3 +1,5 @@
+let g:python3_host_prog = '/Users/qodot/.pyenv/shims/python'
+
 " Vim-Plug
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
