@@ -1,25 +1,16 @@
-let g:python3_host_prog = '/Users/qodot/.pyenv/shims/python'
-
 " Vim-Plug
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'mileszs/ack.vim'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
 Plug 'neomake/neomake'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-Plug 'junegunn/goyo.vim'
-Plug 'shime/vim-livedown'
-
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'posva/vim-vue'
-
-Plug 'kaicataldo/material.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'itchyny/lightline.vim'
 call plug#end()
@@ -32,10 +23,8 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-" let g:seoul256_background = 235
-" colorscheme seoul256
-
-colorscheme material
+let g:seoul256_background = 235
+colorscheme seoul256
 
 " Visual
 set number
@@ -105,15 +94,10 @@ let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeShowHidden = 1
 
 " deoplete
+let g:python3_host_prog = '/Users/qodot/.pyenv/versions/neovim3/bin/python'
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_ignore_case = 1
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " neomake
 call neomake#configure#automake('w')
-call neomake#configure#automake('nw', 750)
-call neomake#configure#automake('rw', 1000)
-
-" lightline
-let g:lightline = {
-            \ 'colorscheme': 'material_vim',
-            \ }

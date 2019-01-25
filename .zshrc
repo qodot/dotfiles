@@ -6,7 +6,7 @@ export ZSH=/Users/qodot/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME='muse'
+ZSH_THEME='amuse'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -83,6 +83,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# lang lc
+export LANG="ko_KR.UTF-8"
+export LC_ALL="ko_KR.UTF-8"
+
 # bin
 export PATH="/Users/qodot/bin:$PATH"
 
@@ -109,12 +113,7 @@ alias md='/usr/local/bin/macdown'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # ctags
-alias ctags='/usr/local/bin/ctags'
-
-# colorls
-# source $(dirname $(gem which colorls))/tab_complete.sh
-alias ls='colorls --almost-all --sort-dirs'
-alias ll='colorls --almost-all --long --sort-dirs'
+alias pythonctags='ctags -R --fields=+l --languages=python --python-kinds=-iv -f ./tags . $(python -c "import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d)))")'
 
 # autoenv
 source $(brew --prefix autoenv)/activate.sh
@@ -124,10 +123,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # imagemagick
 export MAGICK_HOME='/usr/local/Cellar/imagemagick@6/6.9.9-20'
