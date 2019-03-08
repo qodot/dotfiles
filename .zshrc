@@ -113,7 +113,7 @@ alias md='/usr/local/bin/macdown'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # ctags
-alias pythonctags='ctags -R --fields=+l --languages=python --python-kinds=-iv -f ./tags . $(python -c "import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d)))")'
+alias pythonctags=ctags -R --fields=+l --languages=python --python-kinds=-iv -f ./tags . $(python -c "import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d)))")
 
 # autoenv
 source $(brew --prefix autoenv)/activate.sh
@@ -138,3 +138,6 @@ alias wb='/Users/qodot/workspace/wanted/backdoor'
 # gtbot
 export GTBOT_SLACK_TOKEN='xoxb-273506533014-4PUTqO8E13bZQRyi84vN1TUa'
 export GTBOT_GOOGLE_TOKEN='AIzaSyCrAbZovVQc_hoymDpO9wXX-UDoWKQt358'
+
+# url-shortener
+export URL_SHORTENER_PG_URI='postgresql://postgres:1234@docker.for.mac.localhost:5432/url-shortener'
