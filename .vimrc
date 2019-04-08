@@ -1,12 +1,13 @@
 " Vim-Plug
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'mileszs/ack.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'neomake/neomake'
+Plug 'integralist/vim-mypy'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -81,8 +82,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 " Key Bindings
-map <C-p> :FZF <CR>
-map <C-s> :Ack! "\b<cword>\b" <CR>
+map <C-p> :Files <CR>
 nmap <Leader>w :w<CR>
 map <C-c> <Esc>
 imap <C-c> <Esc>
@@ -93,11 +93,14 @@ vmap <C-c> <Esc>
 let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeShowHidden = 1
 
+nnoremap K :Ag <C-R><C-W><CR>
+
 " deoplete
-let g:python3_host_prog = '/Users/qodot/.pyenv/versions/neovim3/bin/python'
+" let g:python3_host_prog = '/Users/qodot/.pyenv/versions/neovim3/bin/python'
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_ignore_case = 1
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " neomake
 call neomake#configure#automake('w')
+let g:neomake_python_enabled_makers = ['flake8']

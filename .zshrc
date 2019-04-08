@@ -87,6 +87,13 @@ source $ZSH/oh-my-zsh.sh
 export LANG="ko_KR.UTF-8"
 export LC_ALL="ko_KR.UTF-8"
 
+# For compilers to find zlib you may need to set:
+export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
+export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
+
+# For pkg-config to find zlib you may need to set:
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
+
 # bin
 export PATH="/Users/qodot/bin:$PATH"
 
@@ -124,16 +131,18 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 # imagemagick
-export MAGICK_HOME='/usr/local/Cellar/imagemagick@6/6.9.9-20'
+export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
+
+# postgresql
+export PATH="/usr/local/Cellar/postgresql@9.4/9.4.21/bin:$PATH"
 
 # mysql
-export PATH="/usr/local/mysql/bin:$PATH"
-
-# navigation
-alias ww='/Users/qodot/workspace/wanted/wantedweb'
-alias ws='/Users/qodot/workspace/wanted/sally'
-alias wb='/Users/qodot/workspace/wanted/backdoor'
+export PATH="/usr/local/Cellar/mysql@5.6/5.6.43/bin:$PATH"
 
 # gtbot
 export GTBOT_SLACK_TOKEN='xoxb-273506533014-4PUTqO8E13bZQRyi84vN1TUa'
