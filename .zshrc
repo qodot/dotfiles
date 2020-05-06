@@ -151,10 +151,6 @@ alias cf='cd ~/workspace/styleshare/classifier'
 alias lsw='python setup.py flake8'
 alias tsw='python manage.py test'
 
-# gtbot
-export GTBOT_SLACK_TOKEN='xoxb-273506533014-4PUTqO8E13bZQRyi84vN1TUa'
-export GTBOT_GOOGLE_TOKEN='AIzaSyCrAbZovVQc_hoymDpO9wXX-UDoWKQt358'
-
 # url-shortener
 export URL_SHORTENER_PG_URI='postgresql://postgres:1234@localhost:5432/url-shortener'
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
