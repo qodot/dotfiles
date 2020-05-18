@@ -1,4 +1,5 @@
 123
+456
 
 call plug#begin('~/.config/nvim/plugged')
 
