@@ -1,7 +1,4 @@
-123
-456
-
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin()
 
 " utils
 Plug 'mhinz/vim-startify'
@@ -11,10 +8,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'itchyny/lightline.vim'
+Plug 'vim-test/vim-test'
+Plug 'benmills/vimux'
 
 " visual
 Plug 'ayu-theme/ayu-vim'
-" Plug 'NLKNguyen/papercolor-theme'
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -27,13 +25,18 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-" python
+" py
 Plug 'ryanolsonx/vim-lsp-python'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'psf/black'
-Plug 'integralist/vim-mypy'
+Plug 'psf/black', { 'tag': '19.10b0' }
+Plug 'flebel/vim-mypy', { 'for': 'python', 'branch': 'bugfix/fast_parser_is_default_and_only_parser' }
 
-" other languages
+" js
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+
+" others
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
@@ -44,7 +47,7 @@ set nocompatible
 
 " Theme
 set termguicolors
-let ayucolor="dark"
+let ayucolor="mirage"
 colorscheme ayu
 "set background=dark
 
@@ -58,7 +61,7 @@ set wildmenu
 set wildmode=list:longest,full
 set visualbell
 set cursorline
-set colorcolumn=81
+set colorcolumn=101
 set mouse=a
 set guioptions=a
 set splitright
@@ -121,70 +124,38 @@ let g:fzf_preview_window = 'right:60%'
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
-" ctags
-" nnoremap <C-k> <C-t>
-
-" tagbar
-" nmap <C-m> :TagbarToggle<CR>
-
-" ag
-nnoremap <C-k> :Ag <C-R><C-W><Cr>
-nnoremap <C-j> :LspPeekDefinition<Cr>
-nnoremap <C-k> :LspDefinition<Cr>
-
-" theme
-let g:PaperColor_Theme_Options = {
-  \   'language': {
-  \     'python': {
-  \       'highlight_builtins' : 1
-  \     }
-  \   }
-  \ }
-
-" lightline
-let g:lightline = { 'colorscheme': 'PaperColor' }
+nnoremap <C-h> :Ag <C-R><C-W><Cr>
+nnoremap <C-j> :LspDefinition<Cr>
+nnoremap <C-k> :LspReferences<Cr>
 
 " asyncomplete
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
+" vim test
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+
+function! TestENVStrategy(cmd)
+    let abc = 'FLASK_ENV=test ' . a:cmd
+    call VimuxRunCommand(abc)
+endfunction
+
+let g:test#custom_strategies = {'testenv': function('TestENVStrategy')}
+let test#strategy = "testenv"
+"let test#strategy = "vimux"
+
+" mypy
+nnoremap <C-m> :Mypy<Cr>
+
 " python language server
-if executable('pyls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
-
-" coc
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" deoplete
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#enable_ignore_case = 1
-" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" neomake
-" call neomake#configure#automake('w')
-" let g:neomake_python_enabled_makers = ['flake8']
-
-" kite
-" let g:kite_auto_complete=1
-" let g:kite_tab_complete=1
-
-" black
-let g:black_linelength = 80
-
-" vim-test
-" function! EchoStrategy(cmd)
-"     let $FLASK_ENV = 'test'
-"     echo 'Run test with environment ${FLASK_ENV}: ' . a:cmd
-" endfunction
-" let g:test#custom_strategies = {'echo': function('EchoStrategy')}
-" let g:test#strategy = 'echo'
+" if executable('pyls')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'pyls',
+"         \ 'cmd': {server_info->['pyls']},
+"         \ 'whitelist': ['python'],
+"         \ })
+" endif
