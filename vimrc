@@ -31,10 +31,17 @@ Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'flebel/vim-mypy', { 'for': 'python', 'branch': 'bugfix/fast_parser_is_default_and_only_parser' }
 
-" js
+" web
+Plug 'ryanolsonx/vim-lsp-typescript'
+Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
+Plug 'herringtondarkholme/yats'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " others
 Plug 'rust-lang/rust.vim'
@@ -84,6 +91,9 @@ set cindent
 set smartindent
 autocmd Filetype go setlocal ts=8 sts=8 sw=8 expandtab
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype typescript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype jsx setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype tsx setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
 
@@ -124,9 +134,14 @@ let g:fzf_preview_window = 'right:60%'
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
-nnoremap <C-h> :Ag <C-R><C-W><Cr>
+nnoremap <C-h> :Rg <C-R><C-W><Cr>
 nnoremap <C-j> :LspDefinition<Cr>
 nnoremap <C-k> :LspReferences<Cr>
+
+" vim-lsp
+let g:lsp_signs_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_highlight_references_enabled = 1
 
 " asyncomplete
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -146,16 +161,10 @@ endfunction
 
 let g:test#custom_strategies = {'testenv': function('TestENVStrategy')}
 let test#strategy = "testenv"
-"let test#strategy = "vimux"
 
 " mypy
 nnoremap <C-m> :Mypy<Cr>
 
-" python language server
-" if executable('pyls')
-"     au User lsp_setup call lsp#register_server({
-"         \ 'name': 'pyls',
-"         \ 'cmd': {server_info->['pyls']},
-"         \ 'whitelist': ['python'],
-"         \ })
-" endif
+" black
+let g:black_linelength = 100
+let g:black_skip_string_normalization = 1
