@@ -82,11 +82,10 @@ export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
 alias vi='/usr/local/bin/nvim'
 export EDITOR='/usr/local/bin/nvim'
 
-# list
+# default commands alias
 alias ls="lsd -a"
 alias ll="lsd -la"
 alias lt="lsd --tree"
-
 alias top="htop"
 
 # fzf
@@ -106,10 +105,6 @@ alias gps='git push'
 alias gch='git checkout'
 alias gr='git rebase'
 
-# golang
-export PATH=$PATH:$(go env GOPATH)/bin
-export GOPATH=$(go env GOPATH)
-
 # python
 export PYTHONBREAKPOINT="pudb.set_trace"
 
@@ -120,9 +115,17 @@ eval "$(pyenv virtualenv-init -)"
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
+# golang
+export PATH=$PATH:$(go env GOPATH)/bin
+export GOPATH=$(go env GOPATH)
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # mysql
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+# direnv
+export DIRENV_BASH='/bin/bash'
+eval "$(direnv hook zsh)"

@@ -4,6 +4,7 @@ call plug#begin()
 Plug 'mhinz/vim-startify'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -18,7 +19,7 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-" auto complete
+" auto-complete
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
@@ -30,6 +31,7 @@ Plug 'ryanolsonx/vim-lsp-python'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'flebel/vim-mypy', { 'for': 'python', 'branch': 'bugfix/fast_parser_is_default_and_only_parser' }
+Plug 'mitsuhiko/vim-jinja'
 
 " web
 Plug 'ryanolsonx/vim-lsp-typescript'
@@ -51,6 +53,7 @@ call plug#end()
 
 filetype plugin indent on
 set nocompatible
+set noswapfile
 
 " Theme
 set termguicolors
@@ -78,6 +81,9 @@ set noshowmode
 
 " Format Confing
 set list
+set list listchars+=space:• " 빈칸을 • 로 표시
+set listchars=tab:├─
+set listchars+=trail:⋄ " 뒤 공백을 ⋄ 로
 set formatoptions=cqrt
 
 " Tab Config
@@ -130,15 +136,13 @@ nnoremap <C-N> :NERDTreeToggle <CR>
 
 " fzf
 nnoremap <C-p> :Files<Cr>
-let g:fzf_preview_window = 'right:60%'
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
+" rg
 nnoremap <C-h> :Rg <C-R><C-W><Cr>
-nnoremap <C-j> :LspDefinition<Cr>
-nnoremap <C-k> :LspReferences<Cr>
 
 " vim-lsp
+nnoremap <C-j> :LspDefinition<Cr>
+nnoremap <C-k> :LspReferences<Cr>
 let g:lsp_signs_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_highlight_references_enabled = 1
@@ -161,6 +165,10 @@ endfunction
 
 let g:test#custom_strategies = {'testenv': function('TestENVStrategy')}
 let test#strategy = "testenv"
+
+" vimux
+let g:VimuxOrientation = "h"
+let g:VimuxHeight = "30"
 
 " mypy
 nnoremap <C-m> :Mypy<Cr>
