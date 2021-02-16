@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/godot/.oh-my-zsh
+export ZSH=/Users/qodot/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -60,21 +60,21 @@ HYPHEN_INSENSITIVE="true"
 # Add wisely, as too many plugins slow down shell startup.
 
 plugins=(zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
-autoload -U compinit && compinit
+autoload -Uz compinit
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 # bin
-export PATH="/Users/godot/bin:$PATH"
+export PATH="/Users/qodot/bin:$PATH"
 
 # lang
 export LANG="ko_KR.UTF-8"
 export LC_ALL="ko_KR.UTF-8"
 
 # For compilers to find zlib you may need to set:
-export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
-export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
+export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib"
+export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include"
 # For pkg-config to find zlib you may need to set:
 export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
 
@@ -93,8 +93,7 @@ alias top="htop"
 
 # git
 alias gl="tig"
-alias gs='git status'
-alias gd='git diff --name-only --diff-filter=d | xargs bat --diff'
+alias gs='tig status'
 alias gst='git stash'
 alias ga='git add -p'
 alias gaa='git add .'
@@ -105,27 +104,38 @@ alias gps='git push'
 alias gch='git checkout'
 alias gr='git rebase'
 
+function gd() {
+    if [[ "$1" == "" ]]
+    then
+        target="."
+    else
+        target="$1"
+    fi
+
+    git diff ${target} | delta
+}
+
+# direnv
+export DIRENV_BASH='/bin/bash'
+eval "$(direnv hook zsh)"
+
 # python
 export PYTHONBREAKPOINT="pudb.set_trace"
-
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # golang
 export PATH=$PATH:$(go env GOPATH)/bin
 export GOPATH=$(go env GOPATH)
 
-# nvm
+# node
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+export PATH="$PATH:/Users/qodot/.nvm/versions/node/v14.15.4/bin/node"
 
 # mysql
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-
-# direnv
-export DIRENV_BASH='/bin/bash'
-eval "$(direnv hook zsh)"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
