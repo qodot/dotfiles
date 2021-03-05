@@ -25,12 +25,14 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'wookayin/vim-autoimport'
 
 " py
 Plug 'ryanolsonx/vim-lsp-python'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'psf/black', { 'tag': '19.10b0' }
+Plug 'psf/black'
 Plug 'flebel/vim-mypy', { 'for': 'python', 'branch': 'bugfix/fast_parser_is_default_and_only_parser' }
+Plug 'fisadev/vim-isort'
 Plug 'mitsuhiko/vim-jinja'
 
 " web
@@ -141,10 +143,13 @@ nnoremap <C-p> :Files<Cr>
 nnoremap <C-h> :Rg <C-R><C-W><Cr>
 
 " vim-lsp
-nnoremap <C-j> :LspDefinition<Cr>
+nnoremap <C-j> :vsp<Cr>:LspDefinition<Cr>
+nnoremap <C-u> :sp<Cr>:LspDefinition<Cr>
 nnoremap <C-k> :LspReferences<Cr>
+nnoremap <C-l> :LspHover<Cr>
 let g:lsp_signs_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
 let g:lsp_highlight_references_enabled = 1
 
 " asyncomplete
@@ -168,10 +173,7 @@ let test#strategy = "testenv"
 
 " vimux
 let g:VimuxOrientation = "h"
-let g:VimuxHeight = "30"
-
-" mypy
-nnoremap <C-m> :Mypy<Cr>
+let g:VimuxHeight = "40"
 
 " black
 let g:black_linelength = 100
