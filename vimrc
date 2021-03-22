@@ -17,6 +17,7 @@ Plug 'ayu-theme/ayu-vim'
 
 " git
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 
 " auto-complete
@@ -43,9 +44,7 @@ Plug 'herringtondarkholme/yats'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'npm install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " others
 Plug 'rust-lang/rust.vim'
@@ -100,8 +99,7 @@ set smartindent
 autocmd Filetype go setlocal ts=8 sts=8 sw=8 expandtab
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype typescript setlocal ts=2 sts=2 sw=2 expandtab
-autocmd Filetype jsx setlocal ts=2 sts=2 sw=2 expandtab
-autocmd Filetype tsx setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype typescriptreact setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
 
@@ -175,6 +173,9 @@ let test#strategy = "testenv"
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = "40"
 
-" black
+" python
 let g:black_linelength = 100
 let g:black_skip_string_normalization = 1
+
+" javascript
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact

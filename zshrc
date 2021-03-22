@@ -59,7 +59,7 @@ HYPHEN_INSENSITIVE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
+plugins=(zsh-autosuggestions zsh-completions zsh-syntax-highlighting direnv)
 autoload -Uz compinit
 source $ZSH/oh-my-zsh.sh
 
@@ -93,7 +93,7 @@ alias top="htop"
 
 # git
 alias gl="tig"
-alias gs='tig status'
+alias gs='git status'
 alias gst='git stash'
 alias ga='git add -p'
 alias gaa='git add .'
@@ -115,10 +115,6 @@ function gd() {
     git diff ${target} | delta
 }
 
-# direnv
-export DIRENV_BASH='/bin/bash'
-eval "$(direnv hook zsh)"
-
 # python
 export PYTHONBREAKPOINT="pudb.set_trace"
 export PYENV_ROOT="$HOME/.pyenv"
@@ -139,3 +135,6 @@ export PATH="$PATH:/Users/qodot/.nvm/versions/node/v14.15.4/bin/node"
 # mysql
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# direnv
+eval "$(direnv hook $SHELL)"
