@@ -117,24 +117,19 @@ function gd() {
 
 # python
 export PYTHONBREAKPOINT="pudb.set_trace"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 export PATH="$HOME/.poetry/bin:$PATH"
-
-# golang
-export PATH=$PATH:$(go env GOPATH)/bin
-export GOPATH=$(go env GOPATH)
+eval "$(pyenv init -)"
 
 # node
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 export PATH="$PATH:/Users/qodot/.nvm/versions/node/v14.15.4/bin/node"
-
-# mysql
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# direnv
-eval "$(direnv hook $SHELL)"
+# database
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@12/bin:$PATH"
+
+# java android
+export PATH="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/bin":$PATH
+export PATH="/Users/qodot/Library/Android/sdk/platform-tools:$PATH"
