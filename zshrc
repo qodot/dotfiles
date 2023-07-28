@@ -75,3 +75,10 @@ export PATH="/Users/qodot/Library/Android/sdk/platform-tools:$PATH"
 
 # zsh
 eval "$(starship init zsh)"
+
+# bun completions
+[ -s "/Users/qodot/.bun/_bun" ] && source "/Users/qodot/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
