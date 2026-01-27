@@ -1,24 +1,26 @@
-# default commands alias
-alias ls="lsd -a"
-alias ll="lsd -la"
-alias lt="lsd --tree"
-alias top="htop"
-alias ps="procs --tree"
-
-# lang
-export LANG="ko_KR.UTF-8"
-export LC_ALL="ko_KR.UTF-8"
-
-# bin
-export PATH="/Users/qodot/bin:$PATH"
+# user local bin
+export PATH="$PATH:/Users/qodot/.local/bin"
 
 # homebrew
 export HOMEBREW_PREFIX="/opt/homebrew"
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
-# editor
-alias vi='/opt/homebrew/bin/nvim'
-export EDITOR='/opt/homebrew/bin/nvim'
+# zsh
+eval "$(direnv hook zsh)"
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+# use bash as emacs mode (for using ctrl+A)
+set -o emacs
+
+# default commands alias
+alias ls="lsd -a"
+alias ll="lsd -la"
+alias lt="lsd --tree"
+alias ps="procs --tree"
+alias du="dust"
+alias grep="rg"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -47,34 +49,25 @@ function gd() {
     git diff ${target} | delta
 }
 
-# direnv
-eval "$(direnv hook zsh)"
+# editor
+export EDITOR='/usr/local/bin/cursor'
+alias vi='/opt/homebrew/bin/nvim'
+alias code="cursor"
+alias cx="codex --dangerously-bypass-approvals-and-sandbox"
+alias cc="claude --dangerously-skip-permissions"
+alias oc="opencode"
+alias h="happy --yolo"
+
+# Added by Antigravity
+export PATH="/Users/qodot/.antigravity/antigravity/bin:$PATH"
 
 # python
 export PYTHONBREAKPOINT="pudb.set_trace"
-export PATH="$HOME/.local/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
 
 # node
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-# ruby
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH="/opt/homebrew/lib/ruby/gems/3.2.0/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
-
-# database
-export PATH="/opt/homebrew/opt/postgresql@12/bin:$PATH"
-
-# java android
-export PATH="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/bin":$PATH
-export PATH="/Users/qodot/Library/Android/sdk/platform-tools:$PATH"
-
-# zsh
-eval "$(starship init zsh)"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # bun completions
 [ -s "/Users/qodot/.bun/_bun" ] && source "/Users/qodot/.bun/_bun"
@@ -82,3 +75,28 @@ eval "$(starship init zsh)"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/qodot/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# postgresql
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/postgresql@15/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/postgresql@15/include"
+
+# indentcorp
+# projects
+alias sp="cd /Users/qodot/workspace/indent/backend/projects/spray"
+alias sp2="cd /Users/qodot/workspace/indent/backend2/projects/spray"
+alias ss="cd /Users/qodot/workspace/indent/backend/projects/socialscan"
+alias bl="cd /Users/qodot/workspace/indent/backend/projects/blaster"
+alias spw="cd /Users/qodot/workspace/indent/frontend/apps/spray-web"
+
+# okta login
+alias oktaspraydev="okta-aws-cli -e -o indentcorp.okta.com -i arn:aws:iam:::saml-provider/okta -c 0oa688nincz2BV1EA697 -a 0oacfdvupcpv6CRSP697 -b -z"
+alias oktasprayprod="okta-aws-cli -e -o indentcorp.okta.com -i arn:aws:iam:::saml-provider/okta -c 0oa688nincz2BV1EA697 -a 0oacfdpjhreBuG52j697 -b -z"
+alias oktavreviewprod="okta-aws-cli -e -o indentcorp.okta.com -i arn:aws:iam:::saml-provider/okta -c 0oa688nincz2BV1EA697 -a 0oa66zrnmbVPqWCF5697 -b -z"
