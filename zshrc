@@ -53,21 +53,15 @@ function gd() {
 export EDITOR='/usr/local/bin/cursor'
 alias vi='/opt/homebrew/bin/nvim'
 alias code="cursor"
+
 alias cx="codex --dangerously-bypass-approvals-and-sandbox"
 alias cc="claude --dangerously-skip-permissions"
 alias oc="opencode"
-alias h="happy --yolo"
-
-# Added by Antigravity
-export PATH="/Users/qodot/.antigravity/antigravity/bin:$PATH"
+alias p='pi'
+alias h="CLAUDE_CODE_TASK_LIST_ID=tasks happy --yolo"
 
 # python
 export PYTHONBREAKPOINT="pudb.set_trace"
-
-# node
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # bun completions
 [ -s "/Users/qodot/.bun/_bun" ] && source "/Users/qodot/.bun/_bun"
@@ -88,15 +82,14 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/postgresql@15/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/postgresql@15/include"
 
-# indentcorp
-# projects
+# indentcorp projects
 alias sp="cd /Users/qodot/workspace/indent/backend/projects/spray"
 alias sp2="cd /Users/qodot/workspace/indent/backend2/projects/spray"
 alias ss="cd /Users/qodot/workspace/indent/backend/projects/socialscan"
 alias bl="cd /Users/qodot/workspace/indent/backend/projects/blaster"
 alias spw="cd /Users/qodot/workspace/indent/frontend/apps/spray-web"
 
-# okta login
+# indentcorp okta
 alias oktaspraydev="okta-aws-cli -e -o indentcorp.okta.com -i arn:aws:iam:::saml-provider/okta -c 0oa688nincz2BV1EA697 -a 0oacfdvupcpv6CRSP697 -b -z"
 alias oktasprayprod="okta-aws-cli -e -o indentcorp.okta.com -i arn:aws:iam:::saml-provider/okta -c 0oa688nincz2BV1EA697 -a 0oacfdpjhreBuG52j697 -b -z"
 alias oktavreviewprod="okta-aws-cli -e -o indentcorp.okta.com -i arn:aws:iam:::saml-provider/okta -c 0oa688nincz2BV1EA697 -a 0oa66zrnmbVPqWCF5697 -b -z"
